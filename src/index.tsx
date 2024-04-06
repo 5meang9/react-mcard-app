@@ -4,6 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+
+const Container = styled.div`
+  color: pink; 
+`
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

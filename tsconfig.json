@@ -1,4 +1,5 @@
 {
+  "extends":"./tsconfig.paths.json",
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -18,9 +19,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
+    "types": ["jest","@testing-library/jest-dom"]
   },
   "include": [
-    "src"
+    "src",
+    "./tsconfig.paths.json"
   ]
 }
