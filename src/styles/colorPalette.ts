@@ -14,6 +14,7 @@ export const colorPalette = css`
     --gray700: rgba(58, 58, 58, 0.7);
     --gray800: rgba(58, 58, 58, 0.8);
     --gray900: rgba(58, 58, 58, 0.9);
+    --green: #4caf50;
     --brightGray: rgba(239, 239, 239, 1);
     --blue: rgba(54, 143, 255, 1);
     --blue60: rgba(54, 143, 255, 0.06);
@@ -46,6 +47,7 @@ export const colors = {
   gray700: 'var(--gray700)',
   gray800: 'var(--gray800)',
   gray900: 'var(--gray900)',
+  green: 'var(--green)',
   brightGray: 'var(--brightGray)',
   blue: 'var(--blue)',
   blue60: 'var(--blue60)',
