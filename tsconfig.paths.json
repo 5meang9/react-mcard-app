@@ -4,9 +4,17 @@
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
-      "@shared/*": ["src/components/shared/*"],
       "@styles/*": ["src/styles/*"],
-      "@contexts/*": ["src/contexts/*"]
+      "@shared/*": ["src/components/shared/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@models/*": ["src/models/*"],
+      "@pages/*": ["src/pages/*"],
+      "@remote/*": ["src/remote/*"],
+      "@constants": ["src/constants/index.ts"],
+      "@constants/*": ["src/constants/*"],
+      "@atoms/*": ["src/atoms/*"],
+      "@hooks/*": ["src/hooks/*"]
+
     }
   }
 }
