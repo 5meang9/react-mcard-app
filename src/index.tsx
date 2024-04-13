@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { Global } from '@emotion/react';
 import globalStyles from './styles/globalStyles';
 import { AlertContextProvider } from '@contexts/AlertContext'
+import AuthGuard from './components/auth/AuthGuard';
 
 
 const client = new QueryClient({
@@ -22,7 +23,9 @@ root.render(
     <Global styles={globalStyles} />
     <QueryClientProvider client={client}>
       <AlertContextProvider>
-        <App />
+        <AuthGuard>
+          <App />
+        </AuthGuard>
       </AlertContextProvider>
     </QueryClientProvider>
   </React.StrictMode>
