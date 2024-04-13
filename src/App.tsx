@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { useAlertContext } from './contexts/AlertContext';
@@ -26,11 +26,16 @@ function App() {
         <Route path='/signin' Component={SigninPage} />
         <Route path='/signup' Component={SignupPage} />
         <Route path='/card/:id' Component={CardPage} />
-        <Route path='/apply/:id' element={(
-          <PrivateRoute>
-            <ApplyPage />
-          </PrivateRoute>
-        )} />
+        <Route
+          path="/apply/:id"
+          element={
+            <PrivateRoute>
+              <Suspense fallback={<></>}>
+                <ApplyPage />
+              </Suspense>
+            </PrivateRoute>
+          }
+        />
         <Route path='/apply/done' element={(
           <PrivateRoute>
             <ApplyDone />
