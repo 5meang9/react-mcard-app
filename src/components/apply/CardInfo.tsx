@@ -5,6 +5,7 @@ import { useCallback, useState } from "react"
 import { ApplyValues } from "@/models/apply"
 import { MouseEvent } from "react"
 import FixedBottomButton from "../shared/FixedBottomButton"
+import { css } from "@emotion/react"
 
 type CardInfoValues = Pick<ApplyValues, 'isHipass' | 'isMaster' | 'isRf'>
 
@@ -32,7 +33,7 @@ function CardInfo({
   }, [])
 
   return(
-    <div>
+    <div css={cardInfoContainer}>
       <Button.Group title="해외결제">
         <Button name="isMaster" weak={isMaster === false} size="medium" data-value={true} onClick={handleButtonClick}>Master</Button>
         <Button name="isMaster" weak={isMaster === true} size="medium" data-value={false} onClick={handleButtonClick}>국내전용</Button>
@@ -58,5 +59,9 @@ function CardInfo({
     </div>
   )
 }
+
+const cardInfoContainer = css `
+  padding: 24px;
+`
 
 export default CardInfo

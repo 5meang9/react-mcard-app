@@ -1,6 +1,7 @@
 
 import { 약관목록 } from "@/constants/apply"
 import { ApplyValues } from "@/models/apply"
+import { css } from "@emotion/react"
 import { useCallback, useState, MouseEvent } from "react"
 import Agreement from "../shared/Agreement"
 import FixedBottomButton from "../shared/FixedBottomButton"
@@ -34,7 +35,7 @@ function Terms({ onNext }: { onNext: (terms: ApplyValues['terms']) => void }){
   )
 
   return(
-    <div>
+    <div css={termsContainer}>
       <Agreement>
         <Agreement.Title
           checked={모든약관이_동의되었는가}
@@ -68,5 +69,9 @@ function Terms({ onNext }: { onNext: (terms: ApplyValues['terms']) => void }){
     </div>
   )
 }
+
+const termsContainer = css`
+  padding: 24px;
+`
 
 export default Terms

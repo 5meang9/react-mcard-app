@@ -5,6 +5,7 @@ import Select from "../shared/Select"
 import { ApplyValues } from "@/models/apply"
 import Spacing from "../shared/Spacing"
 import FixedBottomButton from "../shared/FixedBottomButton"
+import { css } from "@emotion/react"
 
 type InfoValues = Pick<ApplyValues, 'salary' | 'creditScore' | 'payDate'>
 
@@ -28,7 +29,7 @@ function BasicInfo({onNext}: { onNext: (infoValues: InfoValues) => void }){
   )
 
   return(
-    <div>
+    <div css={BasicInfoContainer}>
       <Select 
         name='salary'
         label="연소득" 
@@ -60,5 +61,9 @@ function BasicInfo({onNext}: { onNext: (infoValues: InfoValues) => void }){
     </div>
   )
 }
+
+const BasicInfoContainer = css`
+  padding: 24px;
+`
 
 export default BasicInfo
