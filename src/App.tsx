@@ -13,9 +13,9 @@ import Navbar from './components/shared/Navbar';
 import PrivateRoute from './components/auth/PrivateRoute';
 import ApplyPage from './pages/Apply';
 import ApplyDone from './pages/ApplyDone';
+import MyPage from './pages/My';
 
 function App() {
-   const { open } = useAlertContext();
 
   return (
     <BrowserRouter>
@@ -39,6 +39,11 @@ function App() {
         <Route path='/apply/done' element={(
           <PrivateRoute>
             <ApplyDone />
+          </PrivateRoute>
+        )} />
+        <Route path='/my' element={(
+          <PrivateRoute>
+            <MyPage />
           </PrivateRoute>
         )} />
         <Route path='/test' Component={TestPage} />

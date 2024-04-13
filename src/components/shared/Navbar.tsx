@@ -7,6 +7,7 @@ import useUser from "@/hooks/auth/useUser";
 import { useCallback } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "@/remote/firebase";
+import MyImage from "../my/MyImage";
 
 function Navbar(){
   const location = useLocation();
@@ -20,11 +21,15 @@ function Navbar(){
 
   const renderButton = useCallback(() => {
     if(user != null){
-      return <Button onClick={handleLogout}>로그아웃</Button>
+      return (
+        <Link to="/my">
+          <MyImage size={40} />
+        </Link>
+      )
     }
 
     if (showSignButton){
-      return(
+      return (
         <Link to="/signin">
           <Button>로그인/회원가입</Button>
         </Link>
@@ -32,7 +37,7 @@ function Navbar(){
     }
 
     return null
-  }, [user, showSignButton, handleLogout])
+  }, [user, showSignButton])
 
   return(
     <Flex css={navbarContainerStyles} justify="space-between" align="center">
