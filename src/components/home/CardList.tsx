@@ -1,6 +1,6 @@
 import { getCards } from "@/remote/card"
 import { useInfiniteQuery } from "react-query"
-import { flatten } from 'lodash'
+import flatten  from 'lodash.flatten'
 import ListRow from "../shared/ListRow"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { useCallback } from "react"
