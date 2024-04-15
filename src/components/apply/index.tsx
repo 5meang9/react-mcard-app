@@ -7,6 +7,9 @@ import CardInfo from '@components/apply/CardInfo'
 import { ApplyValues, APPLY_STATUS } from '@models/apply'
 import useUser from '@/hooks/auth/useUser'
 import { useParams } from 'react-router-dom'
+import ProgressBar from '../shared/ProgressBar'
+
+const LAST_STEP = 3;
 
 function Apply({ onSubmit }: { onSubmit: (applyValues: ApplyValues) => void }) {
 
@@ -75,6 +78,7 @@ function Apply({ onSubmit }: { onSubmit: (applyValues: ApplyValues) => void }) {
 
   return (
     <div>
+      <ProgressBar progress={(applyValues.step as number) / LAST_STEP} />
       {applyValues.step === 0 ? <Terms onNext={handleTermsChange} /> : null}
       {applyValues.step === 1 ? <BasicInfo onNext={handleBasicInfoChange} /> : null}
       {applyValues.step === 2 ? <CardInfo onNext={handleCardInfoChange} /> : null}

@@ -11,6 +11,12 @@ import useAppliedCard from "@/components/apply/hooks/useAppliedCard"
 import { useAlertContext } from "@/contexts/AlertContext"
 import FullPageLoader from "@/components/shared/FullPageLoader"
 
+const STATUS_MESSAGE = {
+  [APPLY_STATUS.REDAY]: '카드 심사를 준비하고있습니다.',
+  [APPLY_STATUS.PROGRESS]: '카드를 심사중입니다. 잠시만 기다려주세요.',
+  [APPLY_STATUS.COMPLETE]: '카드 신청이 완료되었습니다.'
+}
+
 function ApplyPage(){
   const navigate = useNavigate()
 
@@ -51,7 +57,7 @@ function ApplyPage(){
   })
 
   // 카드 발급 상태, 사용자 id, card id 업데이트
-  usePollApplyStatus({
+  const {data: status} = usePollApplyStatus({
     //성공
     onSuccess: async () => {
       await updateApplyCard({
@@ -97,7 +103,7 @@ function ApplyPage(){
 
   // TODO: 개선
   if (readyToPoll || 카드를신청중인가) {
-    return <FullPageLoader message="카드를 신청중입니다" />
+    return <FullPageLoader message={STATUS_MESSAGE[status ?? 'REDAY']} />
   }
 
   return <Apply onSubmit={mutate} />
