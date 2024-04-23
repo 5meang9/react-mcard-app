@@ -1,14 +1,16 @@
 import { colors } from "@/styles/colorPalette";
-import styled from "@emotion/styled";
+import { SerializedStyles } from "@emotion/react";
+import styled, { CSSObject } from "@emotion/styled";
 import Text from "./Text";
 
 interface BadgeProps{
   label: string;
+  customStyles?: SerializedStyles;
 }
 
-function Badge({label}: BadgeProps){
+function Badge({label, customStyles}: BadgeProps){
   return(
-    <Container>
+    <Container css={customStyles}>
       <Text bold={true} typography="t7" color="white">{label}</Text>
     </Container>
   )
