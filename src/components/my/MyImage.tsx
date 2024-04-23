@@ -19,13 +19,11 @@ function MyImage({
 }) {
   const user = useUser()
   const setUser = useSetRecoilState(userAtom)
+  const currentUser = getAuth(app).currentUser
 
   const handleUploadImage = async (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
 
-    console.log('files', files)
-
-    const currentUser = getAuth(app).currentUser
 
     if (files == null || user == null || currentUser == null) {
       return
@@ -57,7 +55,7 @@ function MyImage({
     <Container>
       <img
         src={
-          user?.photoURL ||
+          currentUser?.photoURL ||
           'https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-64.png'
         }
         alt="유저의 이미지"
