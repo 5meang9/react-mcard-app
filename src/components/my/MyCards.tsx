@@ -69,7 +69,7 @@ function MyCards(){
               </Flex>
               <Flex css={badgeListContainerStyles}>
                 {(card.tags).map((tag, i) => {
-                  return(<Badge label={tag} key={i} customStyles={customStyles} />)
+                  return(<Badge label={tag} key={i} customStyles={customStyles} color='yellow' />)
                 })}
               </Flex>
             </Flex>
@@ -91,7 +91,7 @@ const listRowContainerStyles = css`
   margin-bottom: 10px;
 `
 const badgeListContainerStyles = css`
-  padding: 10px 0;
+  padding: 10px 0 0;
 `
 
 const customStyles = css`

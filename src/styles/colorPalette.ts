@@ -31,6 +31,7 @@ export const colorPalette = css`
     --white900: rgba(255, 255, 255, 0.9);
     --black: rgba(34, 34, 34, 1);
     --teal900: rgba(10, 219, 143, 0.9);
+    --yellow: rgba(247, 202, 24, 1);
   }
 `
 
@@ -64,6 +65,7 @@ export const colors = {
   white900: 'var(--white900)',
   black: 'var(--black)',
   teal900: 'var(--teal900)',
+  yellow: 'var(--yellow)',
 }
 
 export type Colors = keyof typeof colors
