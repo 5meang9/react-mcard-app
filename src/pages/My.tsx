@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { Suspense, useCallback, useEffect } from 'react'
 import { signOut } from 'firebase/auth'
 
 import Flex from '@shared/Flex'
@@ -32,8 +32,9 @@ function MyPage() {
       <Spacing size={20} />
 
       <Button onClick={handleLogout}>로그아웃</Button>
-
-      <MyCards />
+      <Suspense fallback={<div>Loading...</div>}>
+        <MyCards />
+      </Suspense>
     </Flex>
   )
 }

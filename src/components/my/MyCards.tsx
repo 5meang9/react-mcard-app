@@ -4,16 +4,16 @@ import { colors } from '@/styles/colorPalette'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import flatten  from 'lodash.flatten'
-import { useCallback, useEffect } from 'react'
+import { Suspense, useCallback, useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useInfiniteQuery, useQuery } from 'react-query'
 import Flex from '../shared/Flex'
 import Text from '../shared/Text'
 import Badge from '../shared/Badge'
+import ListBlock from '../shared/ListBlock'
 
 function MyCards(){
   const user = useUser()
-  // const { data } = useQuery(['myCards'], () => getMyCards({userId: user?.uid as string}))
 
   const {
     data,
@@ -29,7 +29,7 @@ function MyCards(){
       getNextPageParam: (snapshot) => {
         return snapshot.lastVisible
       },
-      suspense: false,
+      suspense: true,
     },
   )
 
@@ -48,19 +48,20 @@ function MyCards(){
   const cards = flatten(data?.pages.map(({ items }) => items))
 
   return(
-    
-    <InfiniteScroll
-      dataLength={cards.length}
-      hasMore={false}
-      loader={<></>}
-      next={loadMore}
-    >
+    // <Suspense fallback={<div>Loading...</div>}>
+    <>
       {cards.length === 0 ? (
         <Flex css={noCardContainerStyles}>
           <Text typography='t6' color='gray600' bold={true}>카드신청 내역이 없습니다.</Text>
         </Flex>
       ) : (
-        <ul css={ulContainerstyles}>
+        <InfiniteScroll
+          dataLength={cards.length}
+          hasMore={false}
+          loader={<></>}
+          next={loadMore}
+        >
+        {/* <ul css={ulContainerstyles}>
           {cards.map((card, index) => (
             <Flex as='li' css={listRowContainerStyles} direction='column' key={index}>
               <Flex direction='column'>
@@ -78,11 +79,26 @@ function MyCards(){
               </Flex>
             </Flex>
           ))}
+        </ul> */}
+        <ul css={ulContainerstyles}>
+          {cards.map((card, index) => (
+            <ListBlock
+              title={card.corpName}
+              subTitle={card.name}
+              badge={card.tags}
+            />
+
+          ))}
+
         </ul>
+        </InfiniteScroll>
       )}
-    </InfiniteScroll>
+    </>
+    // </Suspense>
+    
   )
 }
+
 
 const noCardContainerStyles = css`
   margin-top: 50px;
