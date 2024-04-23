@@ -17,12 +17,15 @@ export async function getMyCards({userId}: {userId: string;}){
 
   const cardSnapshot =  await getDocs(query(collection(store, COLLECTIONS.CARD), where(documentId(), 'in', getCardsId)));
 
+  const lastVisible = cardSnapshot.docs[cardSnapshot.docs.length - 1]
   // console.log('cardSnapshot', cardSnapshot);
 
-  return cardSnapshot.docs.map((doc) => ({
+  const items = cardSnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data() as Card
   }))
+
+  return{ items, lastVisible }
 
   
 }

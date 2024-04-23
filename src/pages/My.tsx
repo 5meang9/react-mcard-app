@@ -12,6 +12,7 @@ import MyImage from '@components/my/MyImage'
 
 import { getMyCards } from '@/remote/getMyCard'
 import { useQuery } from 'react-query'
+import MyCards from '@/components/my/MyCards'
 
 function MyPage() {
   const user = useUser()
@@ -19,13 +20,6 @@ function MyPage() {
   const handleLogout = useCallback(() => {
     signOut(auth)
   }, [])
-
-  const { data } = useQuery(['myCards'], () => getMyCards({userId: user?.uid as string}))
-  
-  // Todo 내가 신청한 카드 나오도록 변경
-  useEffect(()=>{
-    console.log('data', data)
-  },[data])
 
   return (
     <Flex direction="column" align="center">
@@ -39,7 +33,7 @@ function MyPage() {
 
       <Button onClick={handleLogout}>로그아웃</Button>
 
-      {/* {data?.map()} */}
+      <MyCards />
     </Flex>
   )
 }
