@@ -29,7 +29,7 @@ function MyCards(){
       getNextPageParam: (snapshot) => {
         return snapshot.lastVisible
       },
-      suspense: true,
+      suspense: false,
     },
   )
 
@@ -55,9 +55,13 @@ function MyCards(){
       loader={<></>}
       next={loadMore}
     >
-      <ul css={ulContainerstyles}>
-        {cards.map((card, index) => {
-          return(
+      {cards.length === 0 ? (
+        <Flex css={noCardContainerStyles}>
+          <Text typography='t6' color='gray600' bold={true}>카드신청 내역이 없습니다.</Text>
+        </Flex>
+      ) : (
+        <ul css={ulContainerstyles}>
+          {cards.map((card, index) => (
             <Flex as='li' css={listRowContainerStyles} direction='column' key={index}>
               <Flex direction='column'>
                 <Text bold={true} typography="t6">
@@ -68,17 +72,21 @@ function MyCards(){
                 </Text>
               </Flex>
               <Flex css={badgeListContainerStyles}>
-                {(card.tags).map((tag, i) => {
-                  return(<Badge label={tag} key={i} customStyles={customStyles} color='yellow' />)
-                })}
+                {(card.tags).map((tag, i) => (
+                  <Badge label={tag} key={i} customStyles={customStyles} color='yellow' />
+                ))}
               </Flex>
             </Flex>
-          )
-        })}
-      </ul>
+          ))}
+        </ul>
+      )}
     </InfiniteScroll>
   )
 }
+
+const noCardContainerStyles = css`
+  margin-top: 50px;
+`
 
 const ulContainerstyles = css`
   padding: 16px;

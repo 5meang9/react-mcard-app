@@ -14,6 +14,11 @@ export async function getMyCards({userId}: {userId: string;}){
   )
 
   const getCardsId = snapshot.docs.map((doc) => doc.data().cardId )
+  
+  // 만약 사용자가 신청한 카드가 없는 경우
+  if (getCardsId.length === 0) {
+    return { items: [], lastVisible: null }; // 빈 배열과 null 반환
+  }
 
   const cardSnapshot =  await getDocs(query(collection(store, COLLECTIONS.CARD), where(documentId(), 'in', getCardsId)));
 
