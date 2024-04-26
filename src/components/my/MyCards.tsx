@@ -61,7 +61,6 @@ function MyCards(){
           next={loadMore}
         >
         <ul>
-          <ListBlock.Skeleton />
           {cards.map((card, index) => (
             <ListBlock
               title={card.corpName}
