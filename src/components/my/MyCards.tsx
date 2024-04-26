@@ -48,7 +48,6 @@ function MyCards(){
   const cards = flatten(data?.pages.map(({ items }) => items))
 
   return(
-    // <Suspense fallback={<div>Loading...</div>}>
     <>
       {cards.length === 0 ? (
         <Flex css={noCardContainerStyles}>
@@ -61,40 +60,21 @@ function MyCards(){
           loader={<></>}
           next={loadMore}
         >
-        {/* <ul css={ulContainerstyles}>
-          {cards.map((card, index) => (
-            <Flex as='li' css={listRowContainerStyles} direction='column' key={index}>
-              <Flex direction='column'>
-                <Text bold={true} typography="t6">
-                  {card.corpName}
-                </Text>
-                <Text typography='t7'>
-                  {card.name}
-                </Text>
-              </Flex>
-              <Flex css={badgeListContainerStyles}>
-                {(card.tags).map((tag, i) => (
-                  <Badge label={tag} key={i} customStyles={customStyles} color='yellow' />
-                ))}
-              </Flex>
-            </Flex>
-          ))}
-        </ul> */}
-        <ul css={ulContainerstyles}>
+        <ul>
+          <ListBlock.Skeleton />
           {cards.map((card, index) => (
             <ListBlock
               title={card.corpName}
               subTitle={card.name}
               badge={card.tags}
+              key={index}
+              badgeColor="yellow"
             />
-
           ))}
-
         </ul>
         </InfiniteScroll>
       )}
     </>
-    // </Suspense>
     
   )
 }

@@ -13,6 +13,7 @@ import MyImage from '@components/my/MyImage'
 import { getMyCards } from '@/remote/getMyCard'
 import { useQuery } from 'react-query'
 import MyCards from '@/components/my/MyCards'
+import ListBlock from '@/components/shared/ListBlock'
 
 function MyPage() {
   const user = useUser()
@@ -32,7 +33,8 @@ function MyPage() {
       <Spacing size={20} />
 
       <Button onClick={handleLogout}>로그아웃</Button>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Spacing size={20} />
+      <Suspense fallback={<ListBlock.Skeleton />}>
         <MyCards />
       </Suspense>
     </Flex>

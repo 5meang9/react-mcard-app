@@ -16,12 +16,13 @@ const opacity = keyframes`
   }
 `
 
-const Skeleton = styled.div<{ width: number; height: number }>(
-  ({ width, height }) => ({
+const Skeleton = styled.div<{ width: number; height: number, radius?: string }>(
+  ({ width, height, radius }) => ({
     width,
     height,
     backgroundColor: colors.gray200,
     animation: `${opacity} 2s ease-in-out 0.5s infinite`,
+    borderRadius: radius ? radius : '0',
   }),
 )
 
