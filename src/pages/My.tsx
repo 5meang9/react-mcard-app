@@ -1,4 +1,4 @@
-import { Suspense, useCallback, useEffect } from 'react'
+import { Suspense, useCallback, useEffect, useState } from 'react'
 import { signOut } from 'firebase/auth'
 
 import Flex from '@shared/Flex'
@@ -9,9 +9,6 @@ import Spacing from '@shared/Spacing'
 import useUser from '@hooks/auth/useUser'
 import { auth } from '@remote/firebase'
 import MyImage from '@components/my/MyImage'
-
-import { getMyCards } from '@/remote/getMyCard'
-import { useQuery } from 'react-query'
 import MyCards from '@/components/my/MyCards'
 import ListBlock from '@/components/shared/ListBlock'
 
@@ -34,9 +31,9 @@ function MyPage() {
 
       <Button onClick={handleLogout}>로그아웃</Button>
       <Spacing size={20} />
-      <Suspense fallback={<ListBlock.Skeleton />}>
+      {/* <Suspense fallback={<ListBlock.Skeleton test={test} />}> */}
         <MyCards />
-      </Suspense>
+      {/* </Suspense> */}
     </Flex>
   )
 }

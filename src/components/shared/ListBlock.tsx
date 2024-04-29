@@ -1,19 +1,24 @@
+import { cardAtom } from "@/atoms/card";
 import { colors } from "@/styles/colorPalette";
 import { css } from "@emotion/react";
+import React from "react";
+import { useRecoilValue } from "recoil";
 import Badge from "./Badge";
 import Flex from "./Flex";
 import Skeleton from "./Skeleton";
+import Spacing from "./Spacing";
 import Text from "./Text";
 
 interface ListBlockProps{
-  title: React.ReactNode;
-  subTitle: React.ReactNode;
+  title?: React.ReactNode;
+  subTitle?: React.ReactNode;
   badge?: React.ReactNode;
   badgeColor?: keyof typeof colors;
-  as?: 'div' | 'li'
+  as?: 'div' | 'li',
 }
 
 function ListBlock({as = 'li', title, subTitle, badge, badgeColor}: ListBlockProps){
+
   return(
     <Flex as={as} css={listBlockContainerStyles} direction='column'>
       <Flex direction='column'>
@@ -38,11 +43,16 @@ function ListBlock({as = 'li', title, subTitle, badge, badgeColor}: ListBlockPro
 }
 
 
-function ListBlockSkeleton(){
-  return(
-    <Skeleton width={310} height={125.5} radius="10px" />
-  )
+function ListBlockSkeleton() { // cardLength 추가
+
+  return (
+    <>
+      <Skeleton width={310} height={125.5} radius="10px" />
+      <Spacing size={10}/>
+    </>
+  );
 }
+
 
 ListBlock.Skeleton = ListBlockSkeleton
 
