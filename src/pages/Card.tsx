@@ -23,6 +23,7 @@ function CardPage(){
   const { open } = useAlertContext()
 
   const location = useLocation()
+  const isDelete = location.state && location.state.isDelete;
 
   const navigate = useNavigate();
 
@@ -77,6 +78,11 @@ function CardPage(){
 
   return(
     <div>
+      {isDelete ? (
+        <Flex justify="left" css={deleteCardStyles}>
+          <Text typography="t5" bold={true}>고객님, 이 카드의 혜택 필요하지 않으세요?</Text>
+        </Flex>
+      ): ('')}
       <Top title={`${corpName} ${name}`} subTitle={subTitle}/>
       <ul>
         {benefit.map((text, index) => {
@@ -122,14 +128,16 @@ function CardPage(){
           <Text typography="t7">{removeHtmlTags(promotion.terms)}</Text>
         </Flex>
       ) : null}
-      <Spacing size={1000} />
-      <Review />
-      <Spacing size={100} />
+      <Spacing size={50} />
 
-      {location.state.isDelete ? (
+      {isDelete ? (
         <FixedBottomButton label="카드신청 취소하기" onClick={moveToDeleteCard} color="error" />
       ): (
-        <FixedBottomButton label="1분만에 신청하고 혜택받기" onClick={moveToApply} />
+        <>
+          {/* <Review />
+          <Spacing size={100} /> */}
+          <FixedBottomButton label="1분만에 신청하고 혜택받기" onClick={moveToApply} />
+        </>
       )}
     </div>
   )
@@ -170,6 +178,10 @@ function removeHtmlTags(text: string) {
 const termsContainerStyles = css`
   margin-top: 80px;
   padding: 0 24px 80px 24px;
+`
+
+const deleteCardStyles = css`
+  padding: 24px 24px 0;
 `
 
 export default CardPage
