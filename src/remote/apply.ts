@@ -62,5 +62,7 @@ export async function getAppliedCard({
   // 발급 받은 카드의 정보
   const [applied] = snapshot.docs
 
-  return applied.data() as ApplyValues
+  const id = applied.id;
+
+  return { id, ...applied.data() as ApplyValues }
 }
