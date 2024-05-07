@@ -14,6 +14,7 @@ import PrivateRoute from './components/auth/PrivateRoute';
 import ApplyPage from './pages/Apply';
 import ApplyDone from './pages/ApplyDone';
 import MyPage from './pages/My';
+import DeleteCardPage from './pages/DeleteCard';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path='/signin' Component={SigninPage} />
         <Route path='/signup' Component={SignupPage} />
         <Route path='/card/:id' Component={CardPage} />
+        <Route path='/delete/:id' Component={DeleteCardPage} />
         <Route
           path="/apply/:id"
           element={

@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, useLocation } from "react-router-dom"
 import { useQuery } from "react-query";
 import { getCard } from "@/remote/card";
 
@@ -16,10 +16,13 @@ import { useAlertContext } from "@/contexts/AlertContext";
 import Review from "@/components/card/Review";
 import Spacing from "@/components/shared/Spacing";
 
+
 function CardPage(){
   const { id = '' } = useParams()
   const user = useUser()
   const { open } = useAlertContext()
+
+  const location = useLocation()
 
   const navigate = useNavigate();
 
@@ -43,6 +46,24 @@ function CardPage(){
     }
     // 카드 신청 페이지 이동
     navigate(`/apply/${id}`)
+  },[user, id, open, navigate])
+
+  // [신청하기] 클릭
+  const moveToDeleteCard = useCallback(()=> {
+    // user 정보 없음 > 로그인 페이지 이동 얼럿
+    // ToDo: 로그인 완료 시, 기존 신청하려던 카드 페이지로 이동하는 것도 구현?
+    if(user == null){
+      open({
+        title: '로그인이 필요한 기능입니다.',
+        onButtonClick: () => {
+          navigate(`/signin`)
+        }
+      })
+      
+      return
+    }
+    // 카드 신청 페이지 이동
+    navigate(`/delete/${id}`)
   },[user, id, open, navigate])
 
   if (data == null) {
@@ -105,8 +126,11 @@ function CardPage(){
       <Review />
       <Spacing size={100} />
 
-
-      <FixedBottomButton label="1분만에 신청하고 혜택받기" onClick={moveToApply} />
+      {location.state.isDelete ? (
+        <FixedBottomButton label="카드신청 취소하기" onClick={moveToDeleteCard} color="error" />
+      ): (
+        <FixedBottomButton label="1분만에 신청하고 혜택받기" onClick={moveToApply} />
+      )}
     </div>
   )
 }

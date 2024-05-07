@@ -3,14 +3,16 @@ import { css, keyframes } from "@emotion/react"
 import styled from "@emotion/styled"
 import Button from "./Button"
 import { colors } from "@/styles/colorPalette"
+import { ButtonColor } from "@/styles/button"
 
 interface FixedBottomButtonProps{
   label: string;
   onClick: () => void;
   disabled?: boolean;
+  color?: ButtonColor;
 }
 
-function FixedBottomButton({ label, onClick, disabled}: FixedBottomButtonProps){
+function FixedBottomButton({ label, onClick, disabled, color}: FixedBottomButtonProps){
 
   const $portalRoot = document.getElementById('root-portal')
 
@@ -20,7 +22,7 @@ function FixedBottomButton({ label, onClick, disabled}: FixedBottomButtonProps){
 
   return createPortal(
     <Container>
-      <Button size="medium" disabled={disabled} full={true} onClick={onClick} css={buttonStyles}>{label}</Button>
+      <Button size="medium" disabled={disabled} full={true} onClick={onClick} color={color} css={buttonStyles}>{label}</Button>
     </Container>,
     $portalRoot,
   )

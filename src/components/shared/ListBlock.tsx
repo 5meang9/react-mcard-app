@@ -14,13 +14,14 @@ interface ListBlockProps{
   subTitle?: React.ReactNode;
   badge?: React.ReactNode;
   badgeColor?: keyof typeof colors;
-  as?: 'div' | 'li',
+  as?: 'div' | 'li';
+  onClick?: () => void;
 }
 
-function ListBlock({as = 'li', title, subTitle, badge, badgeColor}: ListBlockProps){
+function ListBlock({as = 'li', title, subTitle, badge, badgeColor, onClick}: ListBlockProps){
 
   return(
-    <Flex as={as} css={listBlockContainerStyles} direction='column'>
+    <Flex as={as} css={listBlockContainerStyles} direction='column' onClick={onClick}>
       <Flex direction='column'>
         <Text bold={true} typography="t6">
           {title}

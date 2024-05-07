@@ -6,9 +6,11 @@ import { useQuery } from 'react-query'
 import Flex from '../shared/Flex'
 import Text from '../shared/Text'
 import ListBlock from '../shared/ListBlock'
+import { useNavigate } from 'react-router-dom'
 
 function MyCards(){
   const user = useUser()
+  const navigate = useNavigate()
 
   const {
     data,
@@ -44,6 +46,9 @@ function MyCards(){
                 badge={card.tags}
                 key={index}
                 badgeColor="yellow"
+                onClick={()=> {
+                  navigate(`/card/${card.id}`, { state: { isDelete: true } })
+                }}
               />
             ))}
           </ul>
