@@ -13,7 +13,14 @@ function ApplyDone() {
   return (
     <>
       <Spacing size={50} />
-      <Flex justify="center">
+      <Flex justify="center" direction='column'>
+        <Flex justify="center">
+          <img
+            width={500}
+            src="/fox-826_512.gif"
+            alt=""
+          />
+        </Flex>
         <Text textAlign='center'>
           {success === 'true'
             ? '카드가 발급되었습니다.'
