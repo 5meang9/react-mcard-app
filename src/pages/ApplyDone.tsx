@@ -18,7 +18,7 @@ function ApplyDone() {
           <img
             width={500}
             src="/fox-826_512.gif"
-            alt=""
+            alt="fox"
           />
         </Flex>
         <Text textAlign='center'>
