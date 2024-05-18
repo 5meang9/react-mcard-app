@@ -131,7 +131,10 @@ function CardPage(){
       <Spacing size={50} />
 
       {isDelete ? (
-        <FixedBottomButton label="카드신청 취소하기" onClick={moveToDeleteCard} color="error" />
+        <Flex direction="row" justify="center">
+          <FixedBottomButton label="계속진행" onClick={moveToDeleteCard} color="error" />
+          {/* <FixedBottomButton label="취소" onClick={() => navigate(`/my`)} color="error" /> */}
+        </Flex>
       ): (
         <>
           {/* <Review />
