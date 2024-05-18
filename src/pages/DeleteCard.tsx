@@ -22,7 +22,6 @@ function DeleteCardPage(){
     () => getAppliedCard({ userId: user?.uid as string, cardId: id }),
   )
 
-  console.log('data',data);
   const appliedId = data ? data.id : null; // data가 존재할 때에만 id를 가져옵니다.
   
   if (appliedId) {
@@ -30,7 +29,6 @@ function DeleteCardPage(){
   }
 
   return(
-    // <CardPage isDelete={true} />
     <Flex justify="center" direction="column" align="center">
       <Spacing size={50}/>
       <Text typography='t3' bold={true}>카드해지가 완료되었습니다.</Text>
@@ -45,8 +43,5 @@ function DeleteCardPage(){
   )
 }
 
-const DeleteContentsStyles = css`
-
-`
 
 export default DeleteCardPage

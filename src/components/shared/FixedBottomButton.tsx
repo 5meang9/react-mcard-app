@@ -10,9 +10,10 @@ interface FixedBottomButtonProps{
   onClick: () => void;
   disabled?: boolean;
   color?: ButtonColor;
+  btnCount?: number;
 }
 
-function FixedBottomButton({ label, onClick, disabled, color}: FixedBottomButtonProps){
+function FixedBottomButton({ label, onClick, disabled, color, btnCount}: FixedBottomButtonProps){
 
   const $portalRoot = document.getElementById('root-portal')
 
@@ -22,7 +23,7 @@ function FixedBottomButton({ label, onClick, disabled, color}: FixedBottomButton
 
   return createPortal(
     <Container>
-      <Button size="medium" disabled={disabled} full={true} onClick={onClick} color={color} css={buttonStyles}>{label}</Button>
+      <Button size="medium" disabled={disabled} full={true} onClick={onClick} color={color} btnCount={btnCount} css={buttonStyles}>{label}</Button>
     </Container>,
     $portalRoot,
   )

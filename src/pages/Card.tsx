@@ -15,6 +15,7 @@ import { useAlertContext } from "@/contexts/AlertContext";
 
 import Review from "@/components/card/Review";
 import Spacing from "@/components/shared/Spacing";
+import Button from "@/components/shared/Button";
 
 
 function CardPage(){
@@ -133,7 +134,7 @@ function CardPage(){
       {isDelete ? (
         <Flex direction="row" justify="center">
           <FixedBottomButton label="계속진행" onClick={moveToDeleteCard} color="error" />
-          {/* <FixedBottomButton label="취소" onClick={() => navigate(`/my`)} color="error" /> */}
+          {/* <FixedBottomButton label="취소" btnCount={2} onClick={() => navigate(`/my`)} color="error" /> */}
         </Flex>
       ): (
         <>

@@ -10,6 +10,7 @@ interface ButtonProps{
   size?: ButtonSize;
   weak?: boolean;
   full?: boolean;
+  btnCount?: number;
   disabled?: boolean;
 }
 
@@ -26,6 +27,14 @@ const BaseButton = styled.button<ButtonProps>(
       ? css`
           display: block;
           width: 100%;
+          border-radius: 0;
+        ` 
+      : undefined),
+  ({ btnCount }) => (
+    btnCount 
+      ? css`
+          display: block;
+          width: ${100/btnCount}%;
           border-radius: 0;
         ` 
       : undefined),
