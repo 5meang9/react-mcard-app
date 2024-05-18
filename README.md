@@ -31,8 +31,16 @@
 ## 상태관리
 - Recoil
 - 권한관리
-## 
-
+## 스타일링
+- Emotion
+## API
+- Firebase Auth 사용자 인증
+- Firebase Storage 이미지 업로드
+- Firestore 데이터 동기화/저장/관리
+## 배포
+- Vercel
+## 링크
+https://react-mcard-app.vercel.app/
 
 
 
